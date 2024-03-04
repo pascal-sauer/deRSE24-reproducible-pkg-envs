@@ -33,11 +33,11 @@ https://events.hifis.net/event/994/contributions/7946/
 ### storytime
 - HPC, ~50 users using same pkg library
 
-- ~30 pkgs developed in-house, ~10 updates per day, most people want all updates <!-- .element: class="fragment" data-fragment-index="2" -->
+- ~30 pkgs developed in-house, ~10 updates per day, most people want all updates
 
-1. finishing up paper, run results today differ from yesterday <!-- .element: class="fragment" data-fragment-index="3" -->
-2. testing new feature in a central tool <!-- .element: class="fragment" data-fragment-index="4" -->
-3. reproduce run from a month ago <!-- .element: class="fragment" data-fragment-index="5" -->
+1. 👩🏻‍🎓 finishing up paper, run results today differ from yesterday <!-- .element: class="fragment" data-fragment-index="2" -->
+2. 🧑🏼‍💻 testing new feature in a central tool <!-- .element: class="fragment" data-fragment-index="3" -->
+3. 👨🏾‍🔧 reproduce run from a month ago <!-- .element: class="fragment" data-fragment-index="4" -->
 
 notes:
 b) get installed automatically on push to github
@@ -47,20 +47,26 @@ day at work
 3. "can I install all pkg versions from back then? I have written them down on a piece of paper"
 can help all of them with pkg envs
 
+3min
+
 ---
 
 ### What is a pkg env?
 
 - installed pkgs
-- specific to a project (folder) <!-- .element: class="fragment" data-fragment-index="2" -->
-- isolated from system-wide installed pkgs <!-- .element: class="fragment" data-fragment-index="3" -->
-- tools to <!-- .element: class="fragment" data-fragment-index="4" -->
-  - install/update/remove pkgs <!-- .element: class="fragment" data-fragment-index="4" -->
-  - document pkg env <!-- .element: class="fragment" data-fragment-index="5" -->
-  - restore pkg env <!-- .element: class="fragment" data-fragment-index="6" -->
+- specific to a project (folder)
+- isolated from system-wide installed pkgs <!-- .element: class="fragment" data-fragment-index="2" -->
+- tools to <!-- .element: class="fragment" data-fragment-index="3" -->
+  - install/update/remove pkgs <!-- .element: class="fragment" data-fragment-index="3" -->
+  - document pkg env <!-- .element: class="fragment" data-fragment-index="3" -->
+  - restore pkg env <!-- .element: class="fragment" data-fragment-index="3" -->
 
 notes:
 conceptual part, let's look at concrete example
+
+--
+
+<img src=renv.png></img>
 
 --
 
@@ -93,45 +99,56 @@ renv.lock
     },
 ```
 
+notes:
+7min
+
 ---
+
+<img src=magpie.png></img>
+
+--
 
 ### MAgPIE pkg envs
 - clone MAgPIE from GitHub
-- one time only: fill empty pkg env <!-- .element: class="fragment" data-fragment-index="2" -->
-- on each start: <!-- .element: class="fragment" data-fragment-index="3" -->
-  - check for updates <!-- .element: class="fragment" data-fragment-index="3" -->
-  - create new pkg env specific to that run <!-- .element: class="fragment" data-fragment-index="4" -->
+- one time only: fill empty pkg env
+- on each start: <!-- .element: class="fragment" data-fragment-index="2" -->
+  - check for updates <!-- .element: class="fragment" data-fragment-index="2" -->
+  - create new pkg env specific to that run <!-- .element: class="fragment" data-fragment-index="2" -->
 
 notes:
 open source land use optimization model in GAMS
 run prep + postprocessing in R
-which pkgs to install? not renv.lock, but DESCRIPTION + auto dep analysis
 ...most users want all updates
 ...to reproduce later
+
+9min
 
 --
 
 ### differences to regular setup
 - lockfile not commited
-- lockfile archive <!-- .element: class="fragment" data-fragment-index="2" -->
-- main pkg env + one immutable pkg env per run <!-- .element: class="fragment" data-fragment-index="3" -->
-- global pkg cache <!-- .element: class="fragment" data-fragment-index="4" -->
-  - ✅ little disk space required <!-- .element: class="fragment" data-fragment-index="5" -->
-  - ✅ instant installation of cached packages <!-- .element: class="fragment" data-fragment-index="6" -->
-  - ⛔️ cache corrupt = all pkg envs break <!-- .element: class="fragment" data-fragment-index="7" -->
-  - ⛔️ dev version with same version number in cache <!-- .element: class="fragment" data-fragment-index="8" -->
-  - ⛔️ file permission issues <!-- .element: class="fragment" data-fragment-index="9" -->
+- lockfile archive
+- main pkg env + one immutable pkg env per run <!-- .element: class="fragment" data-fragment-index="2" -->
+- global pkg cache <!-- .element: class="fragment" data-fragment-index="3" -->
+  - ✅ little disk space required <!-- .element: class="fragment" data-fragment-index="3" -->
+  - ✅ instant installation of cached packages <!-- .element: class="fragment" data-fragment-index="3" -->
+  - ⛔️ cache corrupt = all pkg envs break <!-- .element: class="fragment" data-fragment-index="4" -->
+  - ⛔️ dev version with same version number in cache <!-- .element: class="fragment" data-fragment-index="4" -->
+  - ⛔️ file permission issues <!-- .element: class="fragment" data-fragment-index="4" -->
 
 notes:
 a) pkg envs focus on stability; usually not wanted here (also: merge conflicts)
+which pkgs to install? not renv.lock, but DESCRIPTION + auto dep analysis
 b) per project, timestamps -> time travel alternative to git tracked lockfile
-c) sync / manage async case (how to include one one update to re-run postprocessing)
-d) shared between all users -> - pkg envs symlink into cache
+c) sync / manage async case
+d) shared between all users -> pkg envs symlink into cache
 8.3 GB for 3400 pkg versions
 enables one pkg env per run
 single point of failure, contradicting isolation
 some user did not set umask
 clearly trade-off
+
+16min
 
 ---
 
@@ -139,18 +156,17 @@ clearly trade-off
 
 - ⛔️ need to learn pkg env workflows
 
-- ⛔️ many different pkg envs <!-- .element: class="fragment" data-fragment-index="2" -->
+- ⛔️ many different pkg envs
 
-1. ✅ stable pkg env <!-- .element: class="fragment" data-fragment-index="3" -->
-2. ✅ isolated testing pkg env <!-- .element: class="fragment" data-fragment-index="4" -->
-3. ✅ reproducibility greatly increased <!-- .element: class="fragment" data-fragment-index="5" -->
-  - ⚠️ e.g. system libs not covered <!-- .element: class="fragment" data-fragment-index="6" -->
+1. ✅ stable pkg env 👩🏻‍🎓 <!-- .element: class="fragment" data-fragment-index="2" -->
+2. ✅ isolated testing pkg env 🧑🏼‍💻 <!-- .element: class="fragment" data-fragment-index="3" -->
+3. ✅ reproducibility greatly increased 👨🏾‍🔧 <!-- .element: class="fragment" data-fragment-index="4" -->
+  - ⚠️ e.g. system libs not covered <!-- .element: class="fragment" data-fragment-index="5" -->
 
 
 notes:
 will run into problems
 debugging harder
-3. restoring lockfile depends on pkg still available
 
 ---
 
@@ -159,11 +175,14 @@ debugging harder
 
 [github.com/pascal-sauer](https://github.com/pascal-sauer)
 
-[pascal-sauer.github.io/deRSE24-reproducible-pkg-envs](https://pascal-sauer.github.io/deRSE24-reproducible-pkg-envs/)<!-- .element: style="font-size: 36px;" -->
+[slides on GitHub](https://github.com/pascal-sauer/deRSE24-reproducible-pkg-envs)
 
 [renv homepage](https://rstudio.github.io/renv/)
 
-[presentation created with reveal.js by Hakim El Hattab](https://revealjs.com/)
+[slides made with reveal.js](https://revealjs.com/)
+
+notes:
+19min
 
 					</textarea>
 				</section>
