@@ -18,7 +18,7 @@
 			<div class="slides">
 				<section data-markdown data-separator-vertical="^\r?\n--\r?\n$">
 					<textarea data-template>
-## Reproducible pkg envs for Modeling Workflows
+### Reproducible pkg envs for Modeling Workflows
 
 Pascal Sauer
 
@@ -122,15 +122,23 @@ run prep + postprocessing in R
 ...to reproduce later
 
 9min
+x8:30min
 
 --
 
 ### differences to regular setup
+- daily updates vs. stable pkg env
+- for each run one stable pkg env
+- quick pkg env creation needed
+
+--
+
+### technical differences
 - lockfile not commited
 - lockfile archive
-- main pkg env + one immutable pkg env per run <!-- .element: class="fragment" data-fragment-index="2" -->
-- global pkg cache <!-- .element: class="fragment" data-fragment-index="3" -->
-  - ✅ little disk space required <!-- .element: class="fragment" data-fragment-index="3" -->
+- main pkg env + one stable pkg env per run <!-- .element: class="fragment" data-fragment-index="2" -->
+- global symlink-based pkg cache <!-- .element: class="fragment" data-fragment-index="3" -->
+  - ✅ little disk space required (8.3GB for 3400 pkgs) <!-- .element: class="fragment" data-fragment-index="3" -->
   - ✅ instant installation of cached packages <!-- .element: class="fragment" data-fragment-index="3" -->
   - ⛔️ cache corrupt = all pkg envs break <!-- .element: class="fragment" data-fragment-index="4" -->
   - ⛔️ dev version with same version number in cache <!-- .element: class="fragment" data-fragment-index="4" -->
@@ -160,7 +168,7 @@ clearly trade-off
 
 1. ✅ stable pkg env 👩🏻‍🎓 <!-- .element: class="fragment" data-fragment-index="2" -->
 2. ✅ isolated testing pkg env 🧑🏼‍💻 <!-- .element: class="fragment" data-fragment-index="3" -->
-3. ✅ reproducibility greatly increased 👨🏾‍🔧 <!-- .element: class="fragment" data-fragment-index="4" -->
+3. ✅ greatly increased reproducibility 👨🏾‍🔧 <!-- .element: class="fragment" data-fragment-index="4" -->
   - ⚠️ e.g. system libs not covered <!-- .element: class="fragment" data-fragment-index="5" -->
 
 
